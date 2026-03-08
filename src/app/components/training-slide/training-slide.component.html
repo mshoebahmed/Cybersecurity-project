@@ -1,0 +1,166 @@
+<div class="slide-card" [class.visible]="visible">
+  <div class="accent-bar" [style.background]="'linear-gradient(90deg,' + training.tagColor + ',#00C98A)'"></div>
+  <div class="slide-body">
+
+    <!-- Header -->
+    <div class="slide-header">
+      <span class="slide-num">{{ training.num }}</span>
+      <span class="slide-tag" [style.background]="training.tagBg" [style.color]="training.tagColor">
+        <span class="tag-dot" [style.background]="training.tagColor"></span>
+        {{ training.tag }}
+      </span>
+    </div>
+
+    <!-- Slide 01: text left, icon right -->
+    <ng-container *ngIf="training.num === '01'">
+      <h2 class="slide-title">{{ training.title }}</h2>
+      <p class="slide-intro">{{ training.intro }}</p>
+      <div class="highlight-block">
+        <img [src]="getImg('img_s01')" class="inline-icon" alt="Niet klikken">
+     
+      </div>
+      <div class="slide-tip" *ngIf="training.tip">
+        <div class="tip-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div><div class="slide-tip-label">Tip van de dag</div><div class="slide-tip-text">{{ training.tip }}</div></div>
+      </div>
+    </ng-container>
+
+    <!-- Slide 02: three image columns -->
+    <ng-container *ngIf="training.num === '02'">
+      <h2 class="slide-title">{{ training.title }}</h2>
+      <p class="slide-intro">{{ training.intro }}</p>
+      <div class="three-col" *ngIf="training.imgRow">
+        <div class="col-card" *ngFor="let key of training.imgRow; let i = index">
+          <img [src]="getImg(key)" [alt]="training.imgRowLabels?.[i] ?? ''" class="col-img">
+          <div class="col-body">
+            <div class="col-label">{{ training.imgRowLabels?.[i] }}</div>
+            <p class="col-text">{{ training.bullets[i]?.text }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Slide 03: domain checks -->
+    <ng-container *ngIf="training.num === '03'">
+      <h2 class="slide-title">{{ training.title }}</h2>
+      <p class="slide-intro">{{ training.intro }}</p>
+      <div class="domain-checks">
+        <div class="domain-safe">
+          <span class="check-icon">✓</span>
+          <span>&#64;cybershield.com</span>
+        </div>
+        <div class="domain-danger">
+          <span class="check-icon">✗</span>
+          <span>&#64;cybershield.mail.com &nbsp;of&nbsp; noreply&#64;mail.cybershield.com</span>
+        </div>
+      </div>
+      <div class="slide-tip" *ngIf="training.tip">
+        <div class="tip-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div><div class="slide-tip-label">Tip van de dag</div><div class="slide-tip-text">{{ training.tip }}</div></div>
+      </div>
+    </ng-container>
+
+    <!-- Slide 04: text + letter circles -->
+    <ng-container *ngIf="training.num === '04'">
+      <div class="two-col">
+        <div>
+          <h2 class="slide-title">{{ training.title }}</h2>
+          <p class="slide-intro">{{ training.intro }}</p>
+          <div class="slide-tip" *ngIf="training.tip">
+            <div class="tip-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <div><div class="slide-tip-label">Tip van de dag</div><div class="slide-tip-text">{{ training.tip }}</div></div>
+          </div>
+        </div>
+        <div class="letter-panel">
+          <div class="letters-label">Verwarrende tekens</div>
+          <div class="letter-circles">
+            <div class="letter-circle">m</div>
+            <div class="letter-circle">o</div>
+            <div class="letter-circle">w</div>
+          </div>
+          <div class="letter-table">
+            <div class="letter-row"><code>vv</code> → lijkt op <strong>w</strong></div>
+            <div class="letter-row"><code>rn</code> → lijkt op <strong>m</strong></div>
+            <div class="letter-row"><code>0</code> → lijkt op <strong>o</strong></div>
+            <div class="letter-row"><code>l</code> → lijkt op <strong>1</strong></div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Slides 06, 07, 08, 10: text left, image right -->
+    <ng-container *ngIf="['06','07','08','10'].includes(training.num)">
+      <div class="two-col">
+        <div>
+          <h2 class="slide-title">{{ training.title }}</h2>
+          <p class="slide-intro">{{ training.intro }}</p>
+          <div class="bullets" *ngIf="training.bullets.length">
+            <div class="bullet" *ngFor="let b of training.bullets"
+                 [class.safe]="b.type==='safe'" [class.danger]="b.type==='danger'">
+              <span class="bullet-icon">
+                <ng-container *ngIf="b.type==='safe'">✓</ng-container>
+                <ng-container *ngIf="b.type==='danger'">✗</ng-container>
+                <span *ngIf="b.type==='neutral'" class="bullet-dot"></span>
+              </span>
+              <div>
+                <div class="bullet-label" *ngIf="b.label">{{ b.label }}</div>
+                <div class="bullet-text">{{ b.text }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="slide-tip" *ngIf="training.tip">
+            <div class="tip-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <div><div class="slide-tip-label">Tip van de dag</div><div class="slide-tip-text">{{ training.tip }}</div></div>
+          </div>
+        </div>
+        <div class="img-right" *ngIf="training.img">
+          <img [src]="getImg(training.img)" [alt]="training.imgAlt ?? ''" class="side-img">
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Slides 05, 09: content above, image below -->
+    <ng-container *ngIf="['05','09'].includes(training.num)">
+      <div class="top-two-col" *ngIf="training.num === '09'">
+        <div>
+          <h2 class="slide-title">{{ training.title }}</h2>
+          <p class="slide-intro">{{ training.intro }}</p>
+          <ng-container *ngFor="let s of training.sections">
+            <div class="section-box">
+              <div class="section-label">{{ s.label }}</div>
+              <div class="section-text" [innerHTML]="s.text"></div>
+            </div>
+          </ng-container>
+          <div class="slide-tip" *ngIf="training.tip">
+            <div class="tip-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <div><div class="slide-tip-label">Tip van de dag</div><div class="slide-tip-text">{{ training.tip }}</div></div>
+          </div>
+        </div>
+        <div class="img-right" *ngIf="training.img">
+          <img [src]="getImg(training.img)" [alt]="training.imgAlt ?? ''" class="side-img">
+        </div>
+      </div>
+
+      <ng-container *ngIf="training.num === '05'">
+        <h2 class="slide-title">{{ training.title }}</h2>
+        <p class="slide-intro">{{ training.intro }}</p>
+        <ng-container *ngFor="let s of training.sections">
+          <div class="section-box">
+            <div class="section-label">{{ s.label }}</div>
+            <div class="section-text" [innerHTML]="s.text"></div>
+          </div>
+        </ng-container>
+        <div class="slide-tip" *ngIf="training.tip">
+          <div class="tip-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div><div class="slide-tip-label">Tip van de dag</div><div class="slide-tip-text">{{ training.tip }}</div></div>
+        </div>
+        <div class="bottom-img" *ngIf="training.img">
+          <img [src]="getImg(training.img)" [alt]="training.imgAlt ?? ''" class="full-img">
+        </div>
+      </ng-container>
+    </ng-container>
+
+  </div><!-- /slide-body -->
+</div>

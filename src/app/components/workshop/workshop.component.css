@@ -1,0 +1,89 @@
+.content-section { max-width: 1300px; margin: 0 auto; padding: 0 64px 80px; }
+
+.workshop-card {
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+.accent-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+}
+.card-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.card-left {
+  padding: 52px 48px;
+  border-right: 1px solid var(--border);
+}
+.card-left h2 {
+  font-family: 'Lora', serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 20px 0 16px;
+}
+.card-left p {
+  font-size: 15px;
+  color: var(--body);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+
+.card-right {
+  padding: 52px 48px;
+  background: var(--bg);
+}
+.details-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.detail-list { display: flex; flex-direction: column; gap: 20px; }
+.detail-item { display: flex; align-items: flex-start; gap: 14px; }
+.detail-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.detail-title { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+.detail-text  { font-size: 13px; color: var(--muted); }
+
+.ws-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: var(--cyan-soft);
+  color: #007FA0;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+}
+
+@media (max-width: 900px) {
+  .content-section { padding: 0 24px 60px; }
+  .card-inner { grid-template-columns: 1fr; }
+  .card-left { border-right: none; border-bottom: 1px solid var(--border); padding: 36px 28px; }
+  .card-right { padding: 36px 28px; }
+}

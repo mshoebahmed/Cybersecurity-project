@@ -1,0 +1,113 @@
+.intro-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Doors */
+.door {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: var(--white);
+  z-index: 999;
+  transition: transform 0.75s cubic-bezier(0.77, 0, 0.18, 1);
+}
+.door-left  { left: 0; }
+.door-right { right: 0; }
+.door-left.open  { transform: translateX(-100%); }
+.door-right.open { transform: translateX(100%); }
+
+/* Logo */
+.intro-logo {
+  position: relative;
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.intro-logo.fade-out {
+  opacity: 0;
+  transform: scale(0.88);
+}
+
+.main-logo {
+  width: 300px;
+  height: 300px;
+  filter: drop-shadow(0 8px 40px rgba(0, 196, 232, 0.18));
+}
+
+.brand { text-align: center; }
+.brand-name {
+  display: block;
+  font-family: 'Sora', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: 0.06em;
+}
+.brand-sub {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* Click hint */
+.click-hint {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.click-hint.fade-out { opacity: 0; }
+
+.click-hint span {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.bounce-arrow {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 1.8s infinite;
+  color: var(--muted);
+}
+.bounce-arrow svg { width: 14px; height: 14px; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+@media (max-width: 600px) {
+  .main-logo { width: 200px; height: 200px; }
+  .brand-name { font-size: 22px; }
+}

@@ -1,0 +1,188 @@
+.hero-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+h1 {
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Hero card */
+.hero-visual { display: flex; justify-content: center; }
+
+.hero-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 36px; right: 36px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+  border-radius: 3px 3px 0 0;
+}
+.hero-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.phish-example {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+.phish-example:last-child { margin-bottom: 0; }
+.phish-sender {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.phish-subject { font-size: 12.5px; color: var(--body); font-weight: 300; }
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.badge-danger { background: #FFEAEA; color: #CC2222; }
+.badge-safe   { background: var(--green-soft); color: #007A50; }
+.badge-warn   { background: var(--orange-soft); color: #C44A00; }
+
+/* Stats */
+.stats-bar {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stats-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 44px 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat-item {
+  text-align: center;
+  padding: 0 20px;
+  border-right: 1px solid var(--border);
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+  font-family: 'Lora', serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--dark);
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+.stat-number .acc { color: var(--cyan); }
+.stat-label { font-size: 13px; color: var(--muted); }
+
+/* Content section */
+.content-section {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 80px 64px;
+}
+.section-header { margin-bottom: 52px; }
+.section-title {
+  font-size: clamp(24px, 2.6vw, 38px);
+  font-weight: 600;
+  line-height: 1.2;
+  max-width: 540px;
+  margin-top: 4px;
+}
+.section-sub {
+  font-size: 15px;
+  color: var(--body);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-top: 14px;
+  font-weight: 300;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.feature-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.feature-card:hover {
+  box-shadow: 0 12px 48px rgba(15,31,46,0.1);
+  transform: translateY(-3px);
+}
+.feature-card h3 {
+  font-family: 'Lora', serif;
+  font-size: 19px;
+  font-weight: 600;
+  margin: 16px 0 10px;
+}
+.feature-card p { font-size: 14px; color: var(--body); line-height: 1.75; font-weight: 300; }
+
+.feature-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+.feature-tag::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.feature-tag.cyan  { background: var(--cyan-soft);   color: #007FA0; }
+.feature-tag.cyan::before  { background: var(--cyan); }
+.feature-tag.green { background: var(--green-soft);  color: #007A50; }
+.feature-tag.green::before { background: var(--green); }
+.feature-tag.orange { background: var(--orange-soft); color: #C44A00; }
+.feature-tag.orange::before { background: var(--orange); }
+
+@media (max-width: 1000px) {
+  .hero-two-col { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); padding: 36px 24px; gap: 24px; }
+  .stat-item { border-right: none; }
+  .content-section { padding: 60px 24px; }
+  .cards-grid { grid-template-columns: 1fr; }
+}
