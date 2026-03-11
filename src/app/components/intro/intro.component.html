@@ -1,11 +1,13 @@
-<div class="intro-wrap" (click)="enter()" (keydown.enter)="enter()" (keydown.space)="enter()" tabindex="0" role="button" aria-label="Klik om de site te openen">
+<div class="intro-wrap">
 
   <!-- Doors -->
-  <div class="door door-left" [class.open]="doorOpen"></div>
-  <div class="door door-right" [class.open]="doorOpen"></div>
+  <div class="door door-left"  [style.transform]="'translateX(-' + doorPercent + '%)'"></div>
+  <div class="door door-right" [style.transform]="'translateX(' + doorPercent + '%)'"></div>
 
   <!-- Logo + Brand -->
-  <div class="intro-logo" [class.fade-out]="doorOpen">
+  <div class="intro-logo"
+       [style.opacity]="logoOpacity"
+       [style.transform]="'scale(' + logoScale + ')'">
     <svg class="main-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
       <circle cx="100" cy="100" r="95" fill="#FFFFFF" stroke="#00D9FF" stroke-width="2"/>
       <path d="M100 30 L140 50 L140 90 Q140 120 100 140 Q60 120 60 90 L60 50 Z"
@@ -49,9 +51,9 @@
     </div>
   </div>
 
-  <!-- Click hint -->
-  <div class="click-hint" [class.fade-out]="doorOpen">
-    <span>Klik om te openen</span>
+  <!-- Scroll hint -->
+  <div class="click-hint" [style.opacity]="hintOpacity">
+    <span>Scroll om te openen</span>
     <div class="bounce-arrow">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
         <polyline points="6 9 12 15 18 9"/>

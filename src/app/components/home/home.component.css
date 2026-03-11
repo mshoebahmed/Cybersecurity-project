@@ -86,7 +86,7 @@ h1 {
   margin: 0 auto;
   padding: 44px 64px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 .stat-item {
   text-align: center;
