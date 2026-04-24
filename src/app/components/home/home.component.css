@@ -186,3 +186,25 @@ h1 {
   .content-section { padding: 60px 24px; }
   .cards-grid { grid-template-columns: 1fr; }
 }
+
+
+.showStatus-1 {
+  animation: statusAnimation 0s 1.5s forwards;
+  visibility: hidden;
+}
+
+.showStatus-2 {
+  animation: statusAnimation 0s 2.5s forwards;
+  visibility: hidden;
+}
+.showStatus-3 {
+  animation: statusAnimation 0s 3.5s forwards;
+  visibility: hidden;
+}
+.showStatus-4 {
+  animation: statusAnimation 0s 4.5s forwards;
+  visibility: hidden;
+}
+@keyframes statusAnimation {
+  to   { visibility: visible; }
+}

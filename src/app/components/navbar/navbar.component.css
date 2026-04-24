@@ -70,6 +70,21 @@ nav {
   font-weight: 600 !important;
   font-size: 13.5px !important;
 }
+
+.nav-maps {
+  background: var(--cyan) !important;
+  color: white !important;
+  border-radius: 8px;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+}
+
+.nav-maps:hover {
+  background: #00b0d0;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(0,196,232,0.28);
+}
+
 .nav-cta:hover { background: #1a3048 !important; }
 .nav-cta.active { color: white !important; }
 

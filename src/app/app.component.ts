@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { IntroComponent } from './components/intro/intro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
+import { MapsComponent } from './components/maps/maps.component';
 
 @Component({
   selector: 'cs-root',
   standalone: true,
-  imports: [RouterOutlet, IntroComponent, NavbarComponent, CommonModule],
+  imports: [RouterOutlet, IntroComponent, NavbarComponent,MapsComponent, CommonModule],
   template: `
     <cs-intro *ngIf="showIntro" (entered)="onEnter()"></cs-intro>
     <ng-container *ngIf="!showIntro">
